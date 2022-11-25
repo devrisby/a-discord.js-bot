@@ -1,0 +1,6 @@
+services:
+  discord_bot:
+    container_name: discord_bot
+    build:
+      context: ./
+      dockerfile: Dockerfile
