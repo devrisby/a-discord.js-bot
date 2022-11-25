@@ -1,0 +1,27 @@
+# src: https://thecodest.co/blog/quality-first-5-easy-steps-to-lint-your-code-with-github-workflows-in-javascript-project
+name: Quality Control Check
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [18.x]
+        
+    steps:
+      - uses: actions/checkout@v3 # checkouts out your repo inside github runner directory so workflow can access it (?)
+      - name: Setup Node ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm set-script prepare ''
+      - run: npm i
+      - run: npm run lint:eslint
+      - run: npm run lint:prettier
+      - run: npm run test
