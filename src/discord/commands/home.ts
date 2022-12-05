@@ -7,7 +7,8 @@ const homeSlashCommand: ISlashCommand = {
     .setName('home')
     .setDescription('Replies with github URL of bot source code'),
   async execute(interaction: CommandInteraction) {
-    await interaction.reply(`My source code is at: ${configs.GITHUB_URL}`)
+    // await interaction.reply(`My source code is at: ${configs.GITHUB_URL}`)
+    await interaction.reply(`My source code is at: https://github.com/devrisby/a-discord.js-bot`)
   },
 }
 
